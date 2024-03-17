@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:miniproject_gpay_clone/core/constants/colorconstant.dart';
 import 'package:miniproject_gpay_clone/core/constants/image_constants.dart';
 import 'package:miniproject_gpay_clone/dummy_db.dart';
+import 'package:miniproject_gpay_clone/view/chatpage/ChatScreen.dart';
+import 'package:miniproject_gpay_clone/view/checkbalancescreen/checkbalancescreen.dart';
 
 import 'package:miniproject_gpay_clone/view/profilescreen/profilescreen.dart';
+import 'package:miniproject_gpay_clone/view/transactionscreen/transactionscreen.dart';
 
 class GooglePayHome extends StatefulWidget {
   @override
@@ -81,17 +84,17 @@ class _GooglePayHomeState extends State<GooglePayHome> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Icon(Icons.qr_code_scanner,
-                          size: 30, color: ColorConstants.primaryBlue),
+                          size: 25, color: ColorConstants.primaryBlue),
                       Icon(
                         Icons.contacts,
-                        size: 30,
+                        size: 25,
                         color: ColorConstants.primaryBlue,
                       ),
                       Icon(Icons.send_to_mobile,
-                          size: 30, color: ColorConstants.primaryBlue),
+                          size: 25, color: ColorConstants.primaryBlue),
                       Icon(
                         Icons.account_balance,
-                        size: 30,
+                        size: 25,
                         color: ColorConstants.primaryBlue,
                       )
                     ],
@@ -105,10 +108,16 @@ class _GooglePayHomeState extends State<GooglePayHome> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("     Scan any \n      QR code"),
+                Padding(
+                  padding: const EdgeInsets.only(left: 20),
+                  child: Text("Scan any\nQR code"),
+                ),
                 Text("  Pay\ncontacts"),
-                Text("Pay phone\n number"),
-                Text("Bank\ntransfer")
+                Text("Pay phone\n  number"),
+                Padding(
+                  padding: const EdgeInsets.only(right: 10),
+                  child: Text("Bank\ntransfer"),
+                )
               ],
             ),
             SizedBox(
@@ -123,22 +132,22 @@ class _GooglePayHomeState extends State<GooglePayHome> {
                     children: [
                       Icon(
                         Icons.alternate_email,
-                        size: 30,
+                        size: 25,
                         color: ColorConstants.primaryBlue,
                       ),
                       Icon(
                         Icons.person,
-                        size: 30,
+                        size: 25,
                         color: ColorConstants.primaryBlue,
                       ),
                       Icon(
-                        Icons.person,
-                        size: 30,
+                        Icons.receipt_long,
+                        size: 25,
                         color: ColorConstants.primaryBlue,
                       ),
                       Icon(
                         Icons.charging_station,
-                        size: 30,
+                        size: 25,
                         color: ColorConstants.primaryBlue,
                       )
                     ],
@@ -155,7 +164,10 @@ class _GooglePayHomeState extends State<GooglePayHome> {
                 Text("     Pay UPI Id"),
                 Text("Self\ntransfer"),
                 Text("Pay\nbills"),
-                Text("Mobile\nrecharge")
+                Padding(
+                  padding: const EdgeInsets.only(right: 10),
+                  child: Text("Mobile\nrecharge"),
+                )
               ],
             ),
             SizedBox(
@@ -185,7 +197,6 @@ class _GooglePayHomeState extends State<GooglePayHome> {
                     "People",
                     style: TextStyle(
                       fontSize: 20,
-                      fontWeight: FontWeight.w500,
                     ),
                   ),
                 ],
@@ -207,9 +218,18 @@ class _GooglePayHomeState extends State<GooglePayHome> {
                   return GridTile(
                     child: Column(
                       children: [
-                        CircleAvatar(
-                          backgroundImage: NetworkImage(dummyData[i].imgUrl),
-                          radius: 30,
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ChatSCreen(),
+                                ));
+                          },
+                          child: CircleAvatar(
+                            backgroundImage: NetworkImage(dummyData[i].imgUrl),
+                            radius: 30,
+                          ),
                         ),
                         SizedBox(height: 2),
                         Text(
@@ -236,7 +256,6 @@ class _GooglePayHomeState extends State<GooglePayHome> {
                     "Business",
                     style: TextStyle(
                       fontSize: 20,
-                      fontWeight: FontWeight.w600,
                     ),
                   ),
                   Container(
@@ -263,7 +282,6 @@ class _GooglePayHomeState extends State<GooglePayHome> {
                             "Explore",
                             style: TextStyle(
                               fontSize: 16,
-                              fontWeight: FontWeight.w500,
                               color: Colors.blue[600],
                             ),
                           ),
@@ -359,9 +377,88 @@ class _GooglePayHomeState extends State<GooglePayHome> {
                 },
               ),
             ),
-/////////////////////////////////////
             SizedBox(height: 30),
             SizedBox(height: 30),
+            Padding(
+              padding: EdgeInsets.only(left: 25),
+              child: Row(
+                children: [
+                  Text(
+                    "Bills & recharges",
+                    style: TextStyle(
+                      fontSize: 20,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 25),
+              child: Row(
+                children: [
+                  Text(
+                    "No bills due. Try adding these!",
+                    style: TextStyle(fontSize: 13),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 30),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      CircleAvatar(
+                        radius: 30,
+                        backgroundColor: Colors.blue[100],
+                        child: Icon(Icons.charging_station),
+                      ),
+                      CircleAvatar(
+                        radius: 30,
+                        backgroundColor: Colors.blue[100],
+                        child: Icon(Icons.tv),
+                      ),
+                      CircleAvatar(
+                        radius: 30,
+                        backgroundColor: Colors.blue[100],
+                        child: Icon(Icons.emoji_objects),
+                      ),
+                      CircleAvatar(
+                        radius: 30,
+                        backgroundColor: Colors.blue[100],
+                        child: Icon(Icons.stay_primary_portrait),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: Text("        mobile\n       recharge"),
+                ),
+                Text("DTH/cable"),
+                Text("Electricity"),
+                Padding(
+                  padding: const EdgeInsets.only(right: 20),
+                  child: Text("Postpaid\n  mobile"),
+                )
+              ],
+            ),
+            SizedBox(height: 30),
+            SizedBox(height: 30),
+
             Padding(
               padding: EdgeInsets.only(left: 25),
               child: Row(
@@ -370,7 +467,6 @@ class _GooglePayHomeState extends State<GooglePayHome> {
                     "offers and rewards",
                     style: TextStyle(
                       fontSize: 20,
-                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ],
@@ -469,17 +565,50 @@ class _GooglePayHomeState extends State<GooglePayHome> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Icon(
+                        Icons.speed,
+                        color: Colors.blue,
+                        size: 25,
+                      ),
+                      SizedBox(width: 20),
+                      TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          "Check your CIBIL score",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 13,
+                            color: Colors.black.withOpacity(0.7),
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: 100),
+                      Icon(Icons.arrow_forward_ios, size: 15),
+                    ],
+                  ),
+                  SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Icon(
                         Icons.history,
                         color: Colors.blue,
                         size: 25,
                       ),
                       SizedBox(width: 20),
-                      Text(
-                        "See all payment activity",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 13,
-                          color: Colors.black.withOpacity(0.7),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Transactionscreen()));
+                        },
+                        child: Text(
+                          "see transaction history ",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 13,
+                            color: Colors.black.withOpacity(0.7),
+                          ),
                         ),
                       ),
                       SizedBox(width: 100),
@@ -496,12 +625,20 @@ class _GooglePayHomeState extends State<GooglePayHome> {
                         size: 25,
                       ),
                       SizedBox(width: 20),
-                      Text(
-                        "Check account balance",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 13,
-                          color: Colors.black.withOpacity(0.7),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => BalanceScreen()));
+                        },
+                        child: Text(
+                          "Check bank balance     ",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 13,
+                            color: Colors.black.withOpacity(0.7),
+                          ),
                         ),
                       ),
                       SizedBox(width: 100),
