@@ -162,8 +162,14 @@ class _GooglePayHomeState extends State<GooglePayHome> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text("     Pay UPI Id"),
-                Text("Self\ntransfer"),
-                Text("Pay\nbills"),
+                Padding(
+                  padding: const EdgeInsets.only(right: 10),
+                  child: Text("Self\ntransfer"),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 10),
+                  child: Text("Pay\nbills"),
+                ),
                 Padding(
                   padding: const EdgeInsets.only(right: 10),
                   child: Text("Mobile\nrecharge"),
@@ -452,7 +458,7 @@ class _GooglePayHomeState extends State<GooglePayHome> {
                 Text("Electricity"),
                 Padding(
                   padding: const EdgeInsets.only(right: 20),
-                  child: Text("Postpaid\n  mobile"),
+                  child: Text("Postpaid\n   mobile"),
                 )
               ],
             ),
